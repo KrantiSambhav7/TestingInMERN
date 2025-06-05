@@ -1,6 +1,7 @@
 import {describe, expect, test, it} from '@jest/globals';
 import request from "supertest"; // This will mock a request to the app and not actually start a server
 import { app } from "../index"
+import {z} from "zod"
 
 describe("POST /sum", () => {
     it("should return the sum of two numbers", async () => {

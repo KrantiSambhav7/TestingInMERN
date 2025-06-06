@@ -10,9 +10,10 @@ const sumInput = z.object({
 
 app.post("/sum", (req , res) => {
     const parsedData = sumInput.safeParse(req.body);
+
     if(!parsedData.success){
-        res.json({
-            "Error": "Inputs are invalid"
+        res.status(411).json({
+            "error": "Inputs are invalid"
         });
         return;
     }

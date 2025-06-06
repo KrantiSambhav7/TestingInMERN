@@ -30,4 +30,14 @@ describe("POST /sum", () => {
         expect(res.statusCode).toBe(200);
         expect(res.body.sum).toBe(0);
       });
+
+
+      it("should return the sum of two zero number but I am sending the wrong inputs", async () => {
+        const res = await request(app).post("/sum").send({
+          a: "1", // This test is added to improve the coverage of the code 
+          b: 0
+        });
+        expect(res.statusCode).toBe(411);
+        expect(res.body.error).toBe("Inputs are invalid");
+      });
 });
